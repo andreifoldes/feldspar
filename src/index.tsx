@@ -13,9 +13,35 @@ const worker = new Worker(workerFile)
 let assembly: Assembly
 
 const run = (bridge: Bridge, locale: string): void => {
-  assembly = new Assembly(worker, bridge)
-  assembly.visualisationEngine.start(rootElement, locale)
-  assembly.processingEngine.start()
+  try {
+    assembly = new Assembly(worker, bridge)
+    assembly.visualisationEngine.start(rootElement, locale)
+    assembly.processingEngine.start()
+  } catch (error) {
+    console.error('Failed to initialize application:', error)
+    // Show error message to user
+    rootElement.innerHTML = `
+      <div style="padding: 20px; color: red;">
+        <h1>Application Error</h1>
+        <p>Failed to initialize the application. Please try refreshing the page.</p>
+        <p>If the problem persists, please contact support.</p>
+        <pre>${error instanceof Error ? error.message : String(error)}</pre>
+      </div>
+    `
+  }
+}
+
+// Add error handler for worker
+worker.onerror = (error) => {
+  console.error('Worker error:', error)
+  rootElement.innerHTML = `
+    <div style="padding: 20px; color: red;">
+      <h1>Worker Error</h1>
+      <p>Failed to initialize the Python worker. Please try refreshing the page.</p>
+      <p>If the problem persists, please contact support.</p>
+      <pre>${error.message}</pre>
+    </div>
+  `
 }
 
 if (false) { // Always run in standalone mode for Netlify deployment
