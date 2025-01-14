@@ -50,8 +50,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  },
+  }
   "dependencies": {
     "@supabase/supabase-js": "^2.47.13",
     "@testing-library/jest-dom": "^5.16.5",
