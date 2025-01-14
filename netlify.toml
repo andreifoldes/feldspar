@@ -10,7 +10,7 @@
     poetry config virtualenvs.create false && \
     npm run build
   """
-  publish = "build"
+  publish = "build/web-app"
 
 [build.environment]
   NODE_VERSION = "16.17.0"
