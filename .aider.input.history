@@ -169,3 +169,40 @@
 +If the required Python version is missing, ensure it is added to the pyenv setup or the project configuration.
 +If the Python version needs to be added to the build configuration, make sure that the version is correctly listed in the project's configuration files.
 +If the issue persists, you may need to review the Python version configuration and ensure it is correctly set up for the build process.
+
+# 2025-01-14 19:55:47.831131
++I've deployed my react web-app to netlify but the opening page is empty instead of the correct welcome screen "            You are about to start the process of donating your TikTok data to our University of Oxford study. The data that we ask you to donate will be used for academic research to gain insight into how platforms work."
+
+# 2025-01-14 20:00:59.389726
++Failed to load resource: the server responded with a status of 404 ()
+
+# 2025-01-14 20:01:20.014296
++/undo
+
+# 2025-01-14 20:02:21.913456
++after deployment i see: tiktok-oxforduni.netlify.app/:1 
++        
++        
++       GET https://tiktok-oxforduni.netlify.app/ 404 (Not Found) GET https://tiktok-oxforduni.netlify.app/ 404 (Not Found)
++favicon.ico:1 
++        
++        
++       GET https://tiktok-oxforduni.netlify.app/favicon.ico 404 (Not Found)
+
+# 2025-01-14 20:02:25.084869
++Y
+
+# 2025-01-14 20:11:01.051135
++Manifest: Line: 1, column: 1, Syntax error.
+
+# 2025-01-14 20:11:25.440915
++Y
+
+# 2025-01-14 20:11:33.135642
++A
+
+# 2025-01-14 20:12:06.287831
++Y
+
+# 2025-01-14 20:12:37.483064
++N
