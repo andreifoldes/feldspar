@@ -1,12 +1,19 @@
 [build]
-  command = "curl -sSL https://install.python-poetry.org | python3 - && poetry config virtualenvs.create false && npm run build"
+  command = """
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv && \
+    export PYENV_ROOT="$HOME/.pyenv" && \
+    export PATH="$PYENV_ROOT/bin:$PATH" && \
+    eval "$(pyenv init -)" && \
+    pyenv install 3.10.12 && \
+    pyenv global 3.10.12 && \
+    curl -sSL https://install.python-poetry.org | python3 - && \
+    poetry config virtualenvs.create false && \
+    npm run build
+  """
   publish = "build"
 
 [build.environment]
-  PYTHON_VERSION = "3.10.12"
   NODE_VERSION = "16.17.0"
-  MISE_PYTHON_COMPILE = "false"
-  POETRY_VERSION = "1.7.1"
 
 [build.processing]
   skip_processing = false
