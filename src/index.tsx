@@ -18,7 +18,7 @@ const run = (bridge: Bridge, locale: string): void => {
   assembly.processingEngine.start()
 }
 
-if (process.env.REACT_APP_BUILD !== 'standalone' && process.env.NODE_ENV === 'production') {
+if (process.env.REACT_APP_BUILD !== 'standalone') {
   // Setup embedded mode (requires to be embedded in iFrame)
   console.log('Initializing bridge system')
   LiveBridge.create(window, run)
