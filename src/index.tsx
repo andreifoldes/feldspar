@@ -18,7 +18,7 @@ const run = (bridge: Bridge, locale: string): void => {
   assembly.processingEngine.start()
 }
 
-if (process.env.REACT_APP_BUILD !== 'standalone') {
+if (false) { // Always run in standalone mode for Netlify deployment
   // Setup embedded mode (requires to be embedded in iFrame)
   console.log('Initializing bridge system')
   LiveBridge.create(window, run)
