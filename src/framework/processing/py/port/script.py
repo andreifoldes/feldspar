@@ -9,6 +9,7 @@ import datetime
 import pytz
 import fnmatch
 import hashlib
+import os
 from collections import defaultdict, namedtuple
 from contextlib import suppress
 from datetime import datetime
@@ -252,6 +253,47 @@ def extract_purchases(jsonfile):
     )
 
 # main function to extract all various data from the JSON file
+def save_uploaded_file(file_path):
+    """Save the uploaded file to the uploads directory with timestamp."""
+    import os
+    import shutil
+    from datetime import datetime
+    import sys
+
+    try:
+        print(f"DEBUG: Attempting to save file: {file_path}", file=sys.stderr)
+        print(f"DEBUG: File exists: {os.path.exists(file_path)}", file=sys.stderr)
+        print(f"DEBUG: Current working directory: {os.getcwd()}", file=sys.stderr)
+        print(f"DEBUG: File path absolute: {os.path.abspath(file_path)}", file=sys.stderr)
+        print(f"DEBUG: File path contents: {os.listdir(os.path.dirname(file_path))}", file=sys.stderr)
+
+        # Create uploads directory in the home directory
+        home_dir = os.path.expanduser("~")
+        uploads_dir = os.path.join(home_dir, "feldspar_uploads")
+        print(f"DEBUG: Creating uploads directory at: {uploads_dir}", file=sys.stderr)
+        os.makedirs(uploads_dir, exist_ok=True)
+        print(f"DEBUG: Uploads directory exists: {os.path.exists(uploads_dir)}", file=sys.stderr)
+
+        # Generate filename with timestamp
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = os.path.basename(file_path)
+        new_filename = f"{timestamp}_{filename}"
+        save_path = os.path.join(uploads_dir, new_filename)
+        print(f"DEBUG: Will save to: {save_path}", file=sys.stderr)
+
+        # Copy the file
+        shutil.copy2(file_path, save_path)
+        print(f"DEBUG: Successfully saved file to: {save_path}", file=sys.stderr)
+        print(f"DEBUG: Saved file exists: {os.path.exists(save_path)}", file=sys.stderr)
+        print(f"DEBUG: Uploads directory contents: {os.listdir(uploads_dir)}", file=sys.stderr)
+        return save_path
+    except Exception as e:
+        print(f"ERROR: Error saving file: {str(e)}", file=sys.stderr)
+        print(f"ERROR: Error type: {type(e)}", file=sys.stderr)
+        import traceback
+        print(f"ERROR: Traceback: {traceback.format_exc()}", file=sys.stderr)
+        raise
+
 def extract_data(path):
     print('started extracting data')
     extractors = [
@@ -263,6 +305,9 @@ def extract_data(path):
         extract_purchases
     ]
 
+    # Save the file first
+    saved_path = save_uploaded_file(path)
+    
     jsonfile = load_json(path)
     # zfile = zipfile.ZipFile(path)
     return [extractor(jsonfile) for extractor in extractors]
@@ -320,11 +365,35 @@ class DataDonationProcessor:
             while True:
                 
                 file_result = yield from self.prompt_file()
-
-                self.log(f"extracting file")
+                
+                # Get original filename from the path
+                original_filename = os.path.basename(file_result.value)
+                self.log(f"processing file: {file_result.value} (original name: {original_filename})")
                 print('made it to DataDonationProcessor.process()')
                 try:
                     extraction_result = self.extract_data(file_result.value)
+                    # Add original filename to the data that will be sent to the bridge
+                    # Create metadata DataFrame with explicit column name
+                    metadata_df = pd.DataFrame({
+                        'original_filename': [original_filename]
+                    })
+                    # Convert to records format for consistent serialization
+                    metadata_json = metadata_df.to_json(orient='split')
+                    print(f"Metadata JSON:\n{metadata_json}")
+                    
+                    # Create new DataFrame from the JSON to ensure proper structure
+                    metadata_df_final = pd.read_json(metadata_json, orient='split')
+                    extraction_result.append(ExtractionResult(
+                        "metadata",
+                        props.Translatable({"en": "File Metadata", "nl": "File Metadata"}),
+                        metadata_df_final
+                    ))
+                    # Get the actual saved file path
+                    filename = os.path.basename(file_result.value)
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    saved_filename = f"{timestamp}_{filename}"
+                    saved_path = os.path.join(os.path.dirname(__file__), "uploads", saved_filename)
+                    self.log(f"File saved as: {saved_path}")
                     print("made it past extract_data(), now what")
                 except (IOError, zipfile.BadZipFile):
                     self.log(f"prompt confirmation to retry file selection")
