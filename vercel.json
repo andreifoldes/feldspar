@@ -5,15 +5,34 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build",
-        "installCommand": "npm install && pip install poetry"
+        "distDir": "build"
       }
     }
   ],
+  "env": {
+    "REACT_APP_SUPABASE_URL": "https://wudfbsqjblvgwjfbxaqn.supabase.co",
+    "REACT_APP_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1ZGZic3FqYmx2Z3dqZmJ4YXFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4NjIzNTMsImV4cCI6MjA1MjQzODM1M30.rDwEtjDUEL9Y9NREsA4_O4i_VXH2VRZpzsngxePWeo8"
+  },
+  "build": {
+    "env": {
+      "REACT_APP_SUPABASE_URL": "https://wudfbsqjblvgwjfbxaqn.supabase.co",
+      "REACT_APP_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1ZGZic3FqYmx2Z3dqZmJ4YXFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4NjIzNTMsImV4cCI6MjA1MjQzODM1M30.rDwEtjDUEL9Y9NREsA4_O4i_VXH2VRZpzsngxePWeo8"
+    }
+  },
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "src": "^/static/(.*)",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" },
+      "dest": "/static/$1"
+    },
+    { "src": "^/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "^/manifest.json", "dest": "/manifest.json" },
+    { "src": "^/logo(.*).png", "dest": "/logo$1.png" },
+    {
+      "src": "^/(.*)",
+      "headers": { "cache-control": "public, max-age=0, must-revalidate" },
+      "dest": "/index.html"
     }
-  ]
+  ],
+  "public": true
 }
