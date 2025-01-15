@@ -169,3 +169,598 @@
 +If the required Python version is missing, ensure it is added to the pyenv setup or the project configuration.
 +If the Python version needs to be added to the build configuration, make sure that the version is correctly listed in the project's configuration files.
 +If the issue persists, you may need to review the Python version configuration and ensure it is correctly set up for the build process.
+
+# 2025-01-15 10:47:35.549111
++Y
+
+# 2025-01-15 10:47:49.486162
++/architect
+
+# 2025-01-15 10:48:47.208902
++/add package.json README.md fake_bridge.ts
+
+# 2025-01-15 10:48:51.754493
++Y
+
+# 2025-01-15 10:52:29.696548
++/architect I have a react web-app with python, pyodide and weird package called port that enables users to securely donate their tiktok data via json. The apps run correctly when running it via "npm run start" locally on this computer, but is not running following "netlify deploy". In particular the splashscreen and frontpages aren't rendered and there is no error message in the dev.console. Check the project and advise based on the readme file what is the best way to deploy this project. It seems to advocate using docker, I'm not sure why.
+
+# 2025-01-15 10:54:13.278089
++y
+
+# 2025-01-15 10:54:50.179161
++n
+
+# 2025-01-15 10:54:53.579513
++/clear
+
+# 2025-01-15 10:58:23.218711
++help deploy this react web-app. Explain what is means: Release
++Create release file:
++ npm run release
++Use release file:
++The generated release.zip file can be installed on the Next platform or the self-hosted version, by adding a "Donate task" and at "Flow application" select the generated zip-file.
+
+# 2025-01-15 10:58:59.636032
++N
+
+# 2025-01-15 11:02:24.416503
++help deploy this react web-app. Explain what is means: Release
++Create release file:
++ npm run release
++Use release file:
++The generated release.zip file can be installed on the Next platform or the self-hosted version, by adding a "Donate task" and at "Flow application" select the generated zip-file.
+
+# 2025-01-15 11:03:00.264545
++y
+
+# 2025-01-15 11:03:40.857969
++/run npm run build  # Builds the full application
+
+# 2025-01-15 11:03:40.858031
++/run npm run build  # Builds the full application
+
+# 2025-01-15 11:03:54.048430
++/run npm run release  # Creates the release zip file
+
+# 2025-01-15 11:03:54.048496
++/run npm run release  # Creates the release zip file
+
+# 2025-01-15 11:08:35.883358
++y
+
+# 2025-01-15 11:08:38.782503
++/run npm run release
+
+# 2025-01-15 11:08:38.782559
++/run npm run release
+
+# 2025-01-15 11:08:55.341652
++y
+
+# 2025-01-15 11:10:07.185356
++where can I deploy my web-app using the npm run release generated file
+
+# 2025-01-15 11:11:48.714460
++walk me through how I would deploy this npm release file using AWS - S3 + Lambda and what the pros and cons are
+
+# 2025-01-15 11:12:32.058435
++y
+
+# 2025-01-15 11:13:01.308473
++N
+
+# 2025-01-15 11:13:11.465417
++S
+
+# 2025-01-15 11:13:45.412481
++out of all the the deployment options you listed what is the easiest to setup except "Next" which I'm not interested in
+
+# 2025-01-15 11:14:24.901495
++y
+
+# 2025-01-15 11:14:29.607459
++/run npm install -g vercel
+
+# 2025-01-15 11:14:29.607516
++/run npm install -g vercel
+
+# 2025-01-15 11:14:43.345660
++y
+
+# 2025-01-15 11:14:45.411238
++/run npm run build
+
+# 2025-01-15 11:14:45.411303
++/run npm run build
+
+# 2025-01-15 11:14:58.635075
++/run vercel
+
+# 2025-01-15 11:14:58.635143
++/run vercel
+
+# 2025-01-15 11:15:03.108835
++y
+
+# 2025-01-15 11:20:13.473880
++/add README.md package.json package-lock.json
+
+# 2025-01-15 11:20:16.487449
++/web https://feldspar.vercel.app/
+
+# 2025-01-15 11:20:56.096820
++I tried deploying to vercel but none of my splash screen is appearing. What going wrong? Please gain detailed understanding of the projects requirements to run
+
+# 2025-01-15 11:21:12.415233
++y
+
+# 2025-01-15 11:21:25.043433
++I tried deploying to vercel but none of my splash screen is appearing. What going wrong? Please gain detailed understanding of the projects requirements to run. Please read the readme.md and advise
+
+# 2025-01-15 11:21:34.960844
++N
+
+# 2025-01-15 11:21:39.938703
++/drop package-lock.json
+
+# 2025-01-15 11:21:41.948629
++I tried deploying to vercel but none of my splash screen is appearing. What going wrong? Please gain detailed understanding of the projects requirements to run. Please read the readme.md and advise
+
+# 2025-01-15 11:22:25.294978
++Y
+
+# 2025-01-15 11:23:02.544628
++/run npm run build
+
+# 2025-01-15 11:23:02.544689
++/run npm run build
+
+# 2025-01-15 11:23:15.730896
++/run vercel --prod
+
+# 2025-01-15 11:23:15.730964
++/run vercel --prod
+
+# 2025-01-15 11:23:34.739299
++Y
+
+# 2025-01-15 11:25:08.002118
++Still no splash screen at https://feldspar-lscdk8p5f-andreifoldes-projects.vercel.app . also console log error msg: /%PUBLIC_URL%/favicon.ico:1 
++        
++        
++       Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR
++manifest.json:1 
++        
++        
++       Failed to load resource: the server responded with a status of 401 ()
++manifest.json:1 Manifest: Line: 1, column: 1, Syntax error.
++manifest.json:1 
++        
++        
++       Failed to load resource: the server responded with a status of 401 ()
+
+# 2025-01-15 11:25:11.046975
++Y
+
+# 2025-01-15 11:26:08.515957
++A
+
+# 2025-01-15 11:26:28.280811
++Y
+
+# 2025-01-15 11:26:28.283778
++/run npm run build
+
+# 2025-01-15 11:26:28.283827
++/run npm run build
+
+# 2025-01-15 11:26:41.402718
++/run vercel --prod
+
+# 2025-01-15 11:26:41.402788
++/run vercel --prod
+
+# 2025-01-15 11:27:28.687970
++Y
+
+# 2025-01-15 11:31:01.300380
++vercel build logs error: [11:27:17.831] sh: line 1: poetry: command not found
++[11:27:17.858] Error: Command "npm run build" exited with 127
++[11:27:18.846] 
+
+# 2025-01-15 11:32:02.094714
++Y
+
+# 2025-01-15 11:32:02.097697
++/run npm run build
+
+# 2025-01-15 11:32:02.097744
++/run npm run build
+
+# 2025-01-15 11:32:18.702601
++/run vercel --prod
+
+# 2025-01-15 11:32:18.702665
++/run vercel --prod
+
+# 2025-01-15 11:34:32.443618
++Y
+
+# 2025-01-15 11:34:35.460617
++[11:32:25.445] Running build in Washington, D.C., USA (East) – iad1
++[11:32:25.580] Retrieving list of deployment files...
++[11:32:26.131] Downloading 213 deployment files...
++[11:32:27.628] Restored build cache from previous deployment (7Wao7JiSXWfuZAJF3yLPTVrXMpdH)
++[11:32:27.713] Running "vercel build"
++[11:32:28.205] Vercel CLI 39.3.0
++[11:32:28.338] WARN! Due to `builds` existing in your configuration file, the Build and Development Settings defined in your Project Settings will not apply. Learn More: https://vercel.link/unused-build-settings
++[11:32:29.675] Installing dependencies...
++[11:32:39.754] npm warn deprecated w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
++[11:32:40.198] npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
++[11:32:40.260] npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
++[11:32:40.638] npm warn deprecated rollup-plugin-terser@7.0.2: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
++[11:32:40.993] npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
++[11:32:40.994] npm warn deprecated
++[11:32:40.994] npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
++[11:32:41.593] npm warn deprecated workbox-cacheable-response@6.6.0: workbox-background-sync@6.6.0
++[11:32:42.698] npm warn deprecated workbox-google-analytics@6.6.0: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
++[11:32:42.955] npm warn deprecated domexception@2.0.1: Use your platform's native DOMException instead
++[11:32:43.521] npm warn deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead
++[11:32:44.131] npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
++[11:32:44.675] npm warn deprecated @babel/plugin-proposal-numeric-separator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-numeric-separator instead.
++[11:32:44.676] npm warn deprecated @babel/plugin-proposal-nullish-coalescing-operator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
++[11:32:44.676] npm warn deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
++[11:32:44.736] npm warn deprecated @babel/plugin-proposal-optional-chaining@7.21.0: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
++[11:32:44.736] npm warn deprecated @babel/plugin-proposal-private-methods@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
++[11:32:45.759] npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
++[11:32:46.081] npm warn deprecated svgo@1.3.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
++[11:32:48.576] npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
++[11:32:56.057] 
++[11:32:56.057] > feldspar@0.1.0 prepare
++[11:32:56.057] > husky install
++[11:32:56.058] 
++[11:32:56.099] fatal: not a git repository (or any of the parent directories): .git
++[11:32:56.120] 
++[11:32:56.120] added 1431 packages in 26s
++[11:32:56.121] 
++[11:32:56.121] 280 packages are looking for funding
++[11:32:56.121]   run `npm fund` for details
++[11:32:56.165] Running "npm run build"
++[11:32:56.551] 
++[11:32:56.551] > feldspar@0.1.0 build
++[11:32:56.551] > pip install poetry && npm run build:py && npm run build:app && npm run build:css
++[11:32:56.551] 
++[11:32:56.562] sh: line 1: pip: command not found
++[11:32:56.583] Error: Command "npm run build" exited with 127
++[11:32:57.339] 
+
+# 2025-01-15 11:34:40.776839
++N
+
+# 2025-01-15 11:36:23.309128
++Y
+
+# 2025-01-15 11:36:23.312096
++/run vercel --prod
+
+# 2025-01-15 11:36:23.312144
++/run vercel --prod
+
+# 2025-01-15 11:38:11.360151
++Y
+
+# 2025-01-15 11:38:26.353715
++Use Poetry’s installation script instead of pip. For example, in your package.json:
++
++```json
++{
++  "scripts": {
++    "build": "npm run build:py && npm run build:app && npm run build:css",
++    "build:py": "npm run build:wheel && npm run build:install-wheel",
++    "build:wheel": "curl -sSL https://install.python-poetry.org | python3 - && export PATH=\"$HOME/.local/bin:$PATH\" && cd src/framework/processing/py && poetry build --format wheel",
++    "build:install-wheel": "cp -R src/framework/processing/py/dist/. ./public",
++    "build:app": "react-scripts build",
++    "build:css": "NODE_ENV=production tailwindcss build -i ./src/framework/styles.css -o ./build/styles.css --minify"
++  }
++}
++```
++
++This removes “pip” usage and installs Poetry via its official script. Run “vercel --prod” again.
+
+# 2025-01-15 11:38:35.558460
++N
+
+# 2025-01-15 11:40:47.687925
++Y
+
+# 2025-01-15 11:40:47.690974
++/run vercel --prod
+
+# 2025-01-15 11:40:47.691021
++/run vercel --prod
+
+# 2025-01-15 11:42:55.978767
++Y
+
+# 2025-01-15 11:42:59.689003
++N
+
+# 2025-01-15 11:50:27.182424
++vercel deplyed successfully but error in dev console: Uncaught Error: Missing Supabase environment variables. Make sure .env.local contains REACT_APP_SUPABASE_URL and REACT_APP_SUPABASE_ANON_KEY
++    at supabase.ts:11:11
++    at index.tsx:37:34
++    at index.tsx:37:34
++Vercel CLI 39.3.0
++Error: Can't deploy more than one path.
++Command 'at' not found, but can be installed with:
++sudo apt install at
++Command 'at' not found, but can be installed with:
++sudo apt install at
++Command 'at' not found, but can be installed with:
++sudo apt install at
+
+# 2025-01-15 11:51:17.083804
++Y
+
+# 2025-01-15 11:53:07.343710
++N
+
+# 2025-01-15 11:53:09.322730
++Y
+
+# 2025-01-15 11:53:09.325634
++/run vercel --prod
+
+# 2025-01-15 11:53:09.325689
++/run vercel --prod
+
+# 2025-01-15 11:56:56.142361
++y
+
+# 2025-01-15 11:57:04.856183
++/drop public
+
+# 2025-01-15 11:57:39.379656
++When I launch the app locally it correctly starts with a splashscreen saying:
++Oxford TikTok Study
++You are about to start the process of donating your TikTok data to our University of Oxford study. [...]
++Followed by: TikTok Please follow the download instructions and choose the file that you stored on your device.
++Followed by: Determine whether you would like to donate the data below. Carefully check the data and adjust when required. With your donation you contribute to the previously described research. Thank you in advance.
++Followed by: Thank you for your participation. You can now close the page or refresh to restart the donation flow.
++
++The deployed version is just a white screen
++
+
+# 2025-01-15 11:58:05.985066
++N
+
+# 2025-01-15 11:58:09.699004
++/clear
+
+# 2025-01-15 11:58:11.585112
++When I launch the app locally it correctly starts with a splashscreen saying:
++Oxford TikTok Study
++You are about to start the process of donating your TikTok data to our University of Oxford study. [...]
++Followed by: TikTok Please follow the download instructions and choose the file that you stored on your device.
++Followed by: Determine whether you would like to donate the data below. Carefully check the data and adjust when required. With your donation you contribute to the previously described research. Thank you in advance.
++Followed by: Thank you for your participation. You can now close the page or refresh to restart the donation flow.
++
++The deployed version is just a white screen
++
+
+# 2025-01-15 11:58:46.102577
++Y
+
+# 2025-01-15 12:12:41.740255
++(base) tamas.foldes@erbium:~/Development/Projects/feldspar$ npm run lint:json
++npm ERR! code EJSONPARSE
++npm ERR! path /home/tamas.foldes/Development/Projects/feldspar/package.json
++npm ERR! JSON.parse Unexpected token "/" (0x2F) in JSON at position 67 while parsing near "... \"private\": true,\n  // \"homepage\": \".\",\n..."
++npm ERR! JSON.parse Failed to parse JSON data.
++npm ERR! JSON.parse Note: package.json must be actual JSON, not just JavaScript.
++
++npm ERR! A complete log of this run can be found in:
++npm ERR!     /home/tamas.foldes/.npm/_logs/2025-01-15T12_11_59_862Z-debug-0.log
+
+# 2025-01-15 12:13:10.714179
++Y
+
+# 2025-01-15 12:13:10.716972
++/run npm run lint:json
+
+# 2025-01-15 12:13:10.717020
++/run npm run lint:json
+
+# 2025-01-15 12:13:14.391512
++Y
+
+# 2025-01-15 12:13:25.607657
++Running npm run lint:json
++npm ERR! Missing script: "lint:json"
++npm ERR! 
++npm ERR! To see a list of scripts, run:
++npm ERR!   npm run
++
++npm ERR! A complete log of this run can be found in:
++npm ERR!     /home/tamas.foldes/.npm/_logs/2025-01-15T12_13_11_624Z-debug-0.log
+
+# 2025-01-15 12:13:45.765620
++Y
+
+# 2025-01-15 12:13:45.768386
++/run npm install
+
+# 2025-01-15 12:13:45.768433
++/run npm install
+
+# 2025-01-15 12:13:53.400881
++Y
+
+# 2025-01-15 12:13:56.146590
++/run npm run lint:json
+
+# 2025-01-15 12:13:56.146647
++/run npm run lint:json
+
+# 2025-01-15 12:14:00.030925
++Y
+
+# 2025-01-15 12:15:50.202191
++on the vercel deployed preview site I'm getting: manifest.json:1 Manifest: Line: 1, column: 1, Syntax error.
+
+# 2025-01-15 12:16:01.962189
++Y
+
+# 2025-01-15 12:16:26.569395
++N
+
+# 2025-01-15 12:16:29.082846
++S
+
+# 2025-01-15 12:53:58.528648
++N
+
+# 2025-01-15 12:57:57.865886
++/web https://feldspar.vercel.app/
+
+# 2025-01-15 12:58:10.655576
++On my vercel deployed stie
+
+# 2025-01-15 12:58:34.940399
++/web https://feldspar.vercel.app/
+
+# 2025-01-15 12:58:55.650678
++On my vercel deployed site I'm getting: GET https://feldspar.vercel.app/static/js/bundle.js net::ERR_ABORTED 404 (Not Found)
+
+# 2025-01-15 12:58:57.453067
++Y
+
+# 2025-01-15 12:59:30.162422
++/run npm run build && vercel --prod
+
+# 2025-01-15 12:59:30.162497
++/run npm run build && vercel --prod
+
+# 2025-01-15 13:01:36.509043
++Y
+
+# 2025-01-15 13:03:20.680277
++I'm still getting GET https://feldspar.vercel.app/static/js/bundle.js net::ERR_ABORTED 404 (Not Found)
+
+# 2025-01-15 13:03:23.104817
++Y
+
+# 2025-01-15 13:03:57.446058
++/run npm run build && vercel --prod
+
+# 2025-01-15 13:03:57.446123
++/run npm run build && vercel --prod
+
+# 2025-01-15 13:04:59.177453
++Y
+
+# 2025-01-15 13:06:36.766955
++there is an error now related to manifest.json; <!doctype html>
++<html lang="en">
++    <head>
++        <meta charset="utf-8"/>
++        <link rel="icon" href="/favicon.ico"/>
++        <meta name="viewport" content="width=device-width,initial-scale=1"/>
++        <meta name="theme-color" content="#000000"/>
++        <meta name="description" content="Web site created using create-react-app"/>
++        <link rel="apple-touch-icon" href="/logo192.png"/>
++        <link rel="manifest" href="/manifest.json"/>
++        <title>React App</title>
++        <script>
++            const API_ENDPOINT = "YOUR_API_GATEWAY_URL"
++        </script>
++        <script defer="defer" src="/static/js/main.f8dde9ca.js"></script>
++        <link href="/static/css/main.449f88ba.css" rel="stylesheet"/>
++        <script defer="defer" src="./static/js/main.f8dde9ca.js"></script>
++        <link href="./static/css/main.449f88ba.css" rel="stylesheet">
++    </head>
++    <body>
++        <noscript>You need to enable JavaScript to run this app.</noscript>
++        <div id="root"></div>
++    </body>
++</html>. It shouldn't have <!doctype html> on top
+
+# 2025-01-15 13:06:38.537037
++Y
+
+# 2025-01-15 13:07:34.307109
++/run npm run build && vercel --prod
+
+# 2025-01-15 13:07:34.307167
++/run npm run build && vercel --prod
+
+# 2025-01-15 13:08:34.146631
++Y
+
+# 2025-01-15 13:10:03.796049
++the manifest json is completely wrong: https://feldspar.vercel.app/manifest.json it should be {
++  "short_name": "Feldspar",
++  "name": "Feldspar Data Donation",
++  "icons": [
++    {
++      "src": "favicon.ico",
++      "sizes": "64x64 32x32 24x24 16x16",
++      "type": "image/x-icon"
++    },
++    {
++      "src": "logo192.png",
++      "type": "image/png", 
++      "sizes": "192x192"
++    },
++    {
++      "src": "logo512.png",
++      "type": "image/png",
++      "sizes": "512x512"
++    }
++  ],
++  "start_url": ".",
++  "display": "standalone",
++  "theme_color": "#000000",
++  "background_color": "#ffffff"
++}
++
+
+# 2025-01-15 13:10:07.820747
++N
+
+# 2025-01-15 13:10:11.898129
++Y
+
+# 2025-01-15 13:10:54.377544
++/run npm run build && vercel --prod
+
+# 2025-01-15 13:10:54.377602
++/run npm run build && vercel --prod
+
+# 2025-01-15 13:14:51.393352
++y
+
+# 2025-01-15 13:14:58.731520
++This chance generated a new error: feldspar.vercel.app/:1 Error while trying to use the following icon from the Manifest: https://feldspar.vercel.app/logo192.png (Download error or resource isn't a valid image)
+
+# 2025-01-15 13:15:00.779175
++Y
+
+# 2025-01-15 13:16:15.173731
++/run public/logo192.png
+
+# 2025-01-15 13:16:15.173789
++/run public/logo192.png
+
+# 2025-01-15 13:16:20.905083
++Y
+
+# 2025-01-15 13:16:24.820902
++/run npm run build && vercel --prod
+
+# 2025-01-15 13:16:24.820956
++/run npm run build && vercel --prod
+
+# 2025-01-15 13:17:37.723914
++Y

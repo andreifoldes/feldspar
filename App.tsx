@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabase'
 
@@ -6,21 +5,27 @@ function Page() {
   const [todos, setTodos] = useState([])
 
   useEffect(() => {
-    function getTodos() {
-      const { data: todos } = await supabase.from('todos').select()
-
-      if (todos.length > 1) {
-        setTodos(todos)
+    async function getTodos() {
+      try {
+        const { data, error } = await supabase.from('todos').select()
+        if (error) {
+          console.error(error)
+          return
+        }
+        if (data?.length > 0) {
+          setTodos(data)
+        }
+      } catch (err) {
+        console.error(err)
       }
     }
-
     getTodos()
   }, [])
 
   return (
     <div>
       {todos.map((todo) => (
-        <li key={todo}>{todo}</li>
+        <li key={todo.id}>{todo.title}</li>
       ))}
     </div>
   )
