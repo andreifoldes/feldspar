@@ -80,6 +80,14 @@ function initialise() {
     .then(() => {
       return installPortPackage()
     })
+    .catch((error) => {
+      console.error('Pyodide initialization failed:', error)
+      self.postMessage({
+        eventType: 'initialiseFailed',
+        error: error.toString()
+      })
+      throw error // Re-throw to prevent silent failures
+    })
 }
 
 function startPyodide() {
