@@ -27,6 +27,7 @@
     "prepare": "husky install",
     "check:ts": "ts-standard --env jest",
     "fix:ts": "ts-standard --env jest --fix",
+    "lint:json": "jsonlint package.json vercel.json",
     "clean": "rm -rf ./build",
     "build:css": "NODE_ENV=production tailwindcss build -i ./src/framework/styles.css -o ./build/styles.css --minify",
     "build:wheel": "cd src/framework/processing/py && pip install poetry && poetry build --format wheel",
@@ -56,6 +57,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.185",
+    "jsonlint": "^1.6.3",
     "autoprefixer": "^10.4.12",
     "husky": "^8.0.1",
     "nodemon": "^3.1.9",
