@@ -36,6 +36,7 @@
     "start": "concurrently 'npm run start:py' 'npm run start:app'",
     "build": "npm run build:py && npm run build:app && npm run build:css",
     "release": "npm run build && ./release.sh $npm_package_name",
+    "deploy": "vercel --prod",
     "test": "react-scripts test",
     "lint": "npm run fix:ts"
   },
